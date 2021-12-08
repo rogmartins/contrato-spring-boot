@@ -2,21 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro de Pessoas</title>
 </head>
 <body>
+
 Cadastro de pessoas
-	<form action="salvarpessoa" method="POST">
+	<form action="salvarpessoa" method="POST" th:object="${pessoaobj}">
+	  <label>ID</label>
+	  <input name="id" th:field="*{id}" readonly="readonly">
 	  <label>Tipo</label>
-	  <input type="text" name="tipo" value="F"/><br/>
+	  <input type="text" name="tipo" value="F" th:field="*{tipo}"/><br/>
 	  <label>Nome</label>
-	  <input type="text" name="nome" /><br/>
+	  <input type="text" name="nome" th:field="*{nome}"/><br/>
 	  <label>Sobrenome</label>
-	  <input type="text" name="sobrenome" /><br/>
+	  <input type="text" name="sobrenome" th:field="*{sobrenome}"/><br/>
 	  <label>CPF / CNPJ</label>
-	  <input type="text" name="cpfCnpj" /><br/>
+	  <input type="text" name="cpfCnpj" th:field="*{cpfCnpj}"/><br/>
 	  <input type="submit" value="Salvar" />
 	</form>
+	<br/>
+	<br/>
+	 <form action="pesquisapessoa" method="POST">
+	  <label>Pesquisa por nome</label>
+	  <input name="nomepesquisa" />
+	  <input type="submit" value="Buscar" />
+	 </form >
+	<br/>
+	<br/>
+	<a href="/listapessoas">Listar</a>
+	<br/>
 	<table>
 	  <tr th:each = "pessoa : ${pessoas}">
 	   <td th:text = "${pessoa.id}" ></td >
@@ -24,7 +42,11 @@ Cadastro de pessoas
 	   <td th:text = "${pessoa.nome}" ></td >
 	   <td th:text = "${pessoa.sobrenome}" ></td >
 	   <td th:text = "${pessoa.cpfCnpj}" ></td >
+	   <td><a th:href="@{/editarpessoa/{idpessoa}(idpessoa=${pessoa.id})}">Editar</a ></td>
+	   <td><a th:href="@{/removerpessoa/{idpessoa}(idpessoa=${pessoa.id})}">Excluir</a ></td>
 	  </tr >
 	</table>
+	<script type="text/javascript" src="materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html >
