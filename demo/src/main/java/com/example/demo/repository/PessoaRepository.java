@@ -1,13 +1,13 @@
-package exemplo.demonstracao.contrato.repository;
+package com.example.demo.repository;
 
 import java.util.List;
+
+import com.example.demo.model.Pessoa;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import exemplo.demonstracao.contrato.model.Pessoa;
 
 @Repository
 @Transactional
