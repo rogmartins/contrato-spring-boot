@@ -55,6 +55,22 @@ public class PessoaController {
         
         return mv;
     }
+    /**
+     * Incluir registro de uma pessoa
+     */
+
+    @GetMapping("/pessoas/incluir")
+    public ModelAndView incluir() {
+        ModelAndView mv = new ModelAndView("pessoas/incluir");
+        
+        // Cria um Bean "vazio"
+        Pessoa pessoa = new Pessoa();
+        
+        // Enviar para a view a ser retornada
+        mv.addObject("pessoa", pessoa);
+        
+        return mv;
+    }
 
     @RequestMapping(value = "/salvarPessoa", method = RequestMethod.POST)
     public ModelAndView salvar(@ModelAttribute Pessoa pessoa, BindingResult errors, Model model) {

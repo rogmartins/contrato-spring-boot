@@ -16,13 +16,14 @@ class DemoApplicationTests {
 
 	@Test
 	void testNewPessoa() {
-	  Pessoa p = new Pessoa();
+	 /*
+		Pessoa p = new Pessoa();
 	  p.setCpfCnpj("102.306.270-45");
 	  p.setTipo("FISICA");
 	  p.setNome("Joao");
 	  p.setSobrenome("Silva");
 	  pessoaRepository.save(p);
-	  System.out.println("Salvou");
+	  System.out.println("Salvou");*/
 	}
 
 }
