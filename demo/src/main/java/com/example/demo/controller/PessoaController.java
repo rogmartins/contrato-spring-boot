@@ -72,6 +72,10 @@ public class PessoaController {
         return mv;
     }
 
+    /**
+     * Salva um registro (insere ou atualiza)
+     */
+
     @RequestMapping(value = "/salvarPessoa", method = RequestMethod.POST)
     public ModelAndView salvar(@ModelAttribute Pessoa pessoa, BindingResult errors, Model model) {
 

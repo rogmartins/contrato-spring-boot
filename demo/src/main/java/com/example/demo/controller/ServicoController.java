@@ -72,6 +72,10 @@ public class ServicoController {
         return mv;
     }
 
+    /**
+     * Salva um registro (insere ou atualiza)
+     */
+
     @RequestMapping(value = "/salvarServico", method = RequestMethod.POST)
     public ModelAndView salvar(@ModelAttribute Servico servico, BindingResult errors, Model model) {
 
@@ -86,7 +90,7 @@ public class ServicoController {
     }
 
 
-/**
+    /**
      * Excluir registro de um serviço
      */
 
