@@ -93,7 +93,12 @@ public class PessoaController {
 
     @GetMapping("/pessoas/excluir/{id}")
     public ModelAndView excluir(@PathVariable("id") Long id) {
+       
+        pessoaRepository.deleteById(id);
+        Iterable<Pessoa> pessoas = pessoaRepository.findAll();
+
         ModelAndView mv = new ModelAndView("pessoas/listar");
+        mv.addObject("pessoas", pessoas);
         return mv;
     }
 
