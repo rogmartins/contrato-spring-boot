@@ -3,7 +3,6 @@ package com.example.demo.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Contrato {
         this.id = id;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="contratante_id")
     private Pessoa contratante;
     public Pessoa getContratante() {
@@ -36,7 +35,7 @@ public class Contrato {
         this.contratante = contratante;
     }
     
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="contratada_id")
     private Pessoa contratada;
     public Pessoa getContratada() {
@@ -46,7 +45,7 @@ public class Contrato {
         this.contratada = contratada;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="servico_id")
     private Servico servico;
     public Servico getServico() {

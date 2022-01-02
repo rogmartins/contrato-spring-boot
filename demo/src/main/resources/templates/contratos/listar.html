@@ -53,9 +53,9 @@
                         <td th:text="${contrato.contratante.nome}"></td>
                         <td th:text="${contrato.contratada.nome}"></td>
                         <td th:text="${contrato.servico.nome}"></td>
-                        <td th:text="${contrato.valor}"></td>
-                        <td th:text="${contrato.dt_inicio}"></td>
-                        <td th:text="${contrato.dt_fim}"></td>
+                        <td th:text="${contrato.valorContratado}"></td>
+                        <td th:text="${#dates.format(contrato.dtInicio, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#dates.format(contrato.dtFim, 'dd/MM/yyyy')}"></td>
                         <td><a th:href="@{/contratos/editar/{id}(id=${contrato.id})}">Editar</a></td>
                         <td><a th:href="@{/contratos/excluir/{id}(id=${contrato.id})}">Excluir</a></td>
                     </tr>
