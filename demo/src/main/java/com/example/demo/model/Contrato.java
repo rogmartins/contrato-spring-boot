@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Contrato {
@@ -43,6 +44,16 @@ public class Contrato {
     }
     public void setContratada(Pessoa contratada) {
         this.contratada = contratada;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="servico_id")
+    private Servico servico;
+    public Servico getServico() {
+        return servico;
+    }
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     private BigDecimal valorContratado;
