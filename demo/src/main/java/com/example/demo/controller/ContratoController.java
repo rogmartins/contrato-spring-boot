@@ -89,5 +89,45 @@ public class ContratoController {
         
     }
 
+    /**
+     * Incluir registro de uma pessoa
+     */
+
+    @GetMapping("/contratos/incluir")
+    public ModelAndView incluir() {
+        ModelAndView mv = new ModelAndView("contratos/incluir");
+        
+        // Cria um Bean "vazio"
+        Contrato contrato = new Contrato();
+        
+        // Contratante / Contratada
+        Iterable<Pessoa> pessoas = pessoaRepository.findAll();
+        
+        // Opções de Servicos
+        Iterable<Servico> servicos = servicoRepository.findAll();
+
+        // Enviar para a view a ser retornada
+        mv.addObject("contrato", contrato);
+        mv.addObject("pessoas", pessoas);
+        mv.addObject("servicos", servicos);
+        
+        return mv;
+    }
+
+    /**
+     * Excluir registro de um contrato
+     */
+
+    @GetMapping("/contratos/excluir/{id}")
+    public ModelAndView excluir(@PathVariable("id") Long id) {
+       
+        contratoRepository.deleteById(id);
+        Iterable<Contrato> contratos = contratoRepository.findAll();
+
+        ModelAndView mv = new ModelAndView("redirect:contratos/listar");
+        mv.addObject("contratos", contratos);
+        return mv;
+    }
+
 
 }
